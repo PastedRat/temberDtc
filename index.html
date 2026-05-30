@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tember Mic Frequency Detector</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero-card">
+        <div>
+          <p class="eyebrow">Live microphone spectrum</p>
+          <h1>Tember Detector</h1>
+          <p class="hero-copy">
+            Listen through your microphone, estimate the strongest sound frequency in hertz,
+            and compare it with common sound examples like motors, planes, and human voices.
+          </p>
+        </div>
+        <div class="meter-card" aria-live="polite">
+          <span class="meter-label">Detected pitch</span>
+          <strong id="frequencyValue">-- Hz</strong>
+          <span id="soundMatch">Press start to listen</span>
+        </div>
+      </section>
+
+      <section class="controls-card">
+        <div class="button-row">
+          <button id="startButton" type="button">Start microphone</button>
+          <button id="stopButton" type="button" disabled>Stop</button>
+        </div>
+        <p id="statusText" class="status-text">
+          Microphone access stays in your browser. Use headphones and a steady sound for best results.
+        </p>
+        <canvas id="spectrumCanvas" width="960" height="220" aria-label="Live audio frequency spectrum"></canvas>
+      </section>
+
+      <section class="reference-section" aria-labelledby="referenceTitle">
+        <div class="section-heading">
+          <p class="eyebrow">Reference list</p>
+          <h2 id="referenceTitle">What different sounds often measure around</h2>
+          <p>
+            These are approximate ranges. Real sounds change with distance, engine size, speaker pitch,
+            microphone quality, and background noise.
+          </p>
+        </div>
+        <div id="referenceGrid" class="reference-grid"></div>
+      </section>
+    </main>
+
+    <template id="referenceCardTemplate">
+      <article class="reference-card">
+        <div class="reference-image" aria-hidden="true"></div>
+        <div>
+          <h3></h3>
+          <p class="range"></p>
+          <p class="description"></p>
+        </div>
+      </article>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>
